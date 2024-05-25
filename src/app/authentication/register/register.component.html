@@ -1,0 +1,141 @@
+<section class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+      Flowbite
+    </a>
+    <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+          Sign up to your account
+        </h1>
+        <form [formGroup]="registerForm"  class="space-y-4 md:space-y-6" >
+          <div>
+            <label for="fullName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">FullName</label>
+            <input formControlName="fullName" type="text" name="fullName" id="fullName" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Full Name" >
+          </div>
+          <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)" class="text-red-400 mt-1">
+            <div class="text-xs" *ngIf="fullName?.errors?.['required']">
+              Full Name is required.
+            </div>
+            <div class="text-xs" *ngIf="fullName?.errors?.['minlength']">
+              Full Name  must be at least 4 characters long.
+            </div>
+
+          </div>
+          <div>
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
+            <input formControlName="phone" type="text" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0632548745">
+          </div>
+          <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="text-red-400 mt-1">
+            <div class="text-xs" *ngIf="phone?.errors?.['pattern']">
+              phone must be Valid !
+            </div>
+          </div>
+          <div>
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+            <input  formControlName="email" type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" >
+          </div>
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-red-400 mt-1">
+
+            <div class="text-xs" *ngIf="email?.errors?.['required']">
+              Name is required.
+            </div>
+            <div class="text-xs" *ngIf="email?.errors?.['pattern']">
+              Email must be Valid !
+            </div>
+
+
+          </div>
+          <div>
+            <label  for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <div class="relative flex items-center justify-center">
+             <input  formControlName="password" type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+             <button type="button" (click)="passwordShowFunction()" class="absolute block right-4 mt-2">
+              <svg *ngIf="!this.showPassword" class="svg" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                   width="22" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink"
+                   enable-background="new 0 0 512 512">
+                <g>
+                  <g>
+                    <path
+                      d="m251.6,185.7c-36.9,0-67,31.5-67,70.3 0,38.7 30,70.3 67,70.3 36.9,0 67-31.5 67-70.3 0-38.7-30.1-70.3-67-70.3z" />
+                    <path
+                      d="m251.6,367.1c-59.4,0-107.8-49.8-107.8-111.1 0-61.3 48.4-111.1 107.8-111.1s107.8,49.8 107.8,111.1c0,61.3-48.4,111.1-107.8,111.1zm246.3-121.9c-63.8-102.4-149.8-158.8-241.9-158.8-92.1,0-178.1,56.4-241.9,158.8-4.1,6.6-4.1,15 0,21.6 63.8,102.4 149.8,158.8 241.9,158.8 92.1,0 178-56.4 241.9-158.8 4.1-6.6 4.1-15 0-21.6z" />
+                  </g>
+                </g>
+              </svg>
+              <svg *ngIf="this.showPassword" width="22px" height="22px" viewBox="0 0 24 24" fill="none"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M20.5303 4.53033C20.8232 4.23744 20.8232 3.76256 20.5303 3.46967C20.2374 3.17678 19.7626 3.17678 19.4697 3.46967L3.46967 19.4697C3.17678 19.7626 3.17678 20.2374 3.46967 20.5303C3.76256 20.8232 4.23744 20.8232 4.53033 20.5303L7.37723 17.6834C8.74353 18.3266 10.3172 18.75 12 18.75C14.684 18.75 17.0903 17.6729 18.8206 16.345C19.6874 15.6797 20.4032 14.9376 20.9089 14.2089C21.4006 13.5003 21.75 12.7227 21.75 12C21.75 11.2773 21.4006 10.4997 20.9089 9.79115C20.4032 9.06244 19.6874 8.32028 18.8206 7.65503C18.5585 7.45385 18.2808 7.25842 17.989 7.07163L20.5303 4.53033ZM16.8995 8.16113L15.1287 9.93196C15.5213 10.5248 15.75 11.2357 15.75 12C15.75 14.0711 14.0711 15.75 12 15.75C11.2357 15.75 10.5248 15.5213 9.93196 15.1287L8.51524 16.5454C9.58077 16.9795 10.7621 17.25 12 17.25C14.2865 17.25 16.3802 16.3271 17.9073 15.155C18.6692 14.5703 19.2714 13.9374 19.6766 13.3536C20.0957 12.7497 20.25 12.2773 20.25 12C20.25 11.7227 20.0957 11.2503 19.6766 10.6464C19.2714 10.0626 18.6692 9.42972 17.9073 8.84497C17.5941 8.60461 17.2571 8.37472 16.8995 8.16113ZM11.0299 14.0307C11.3237 14.1713 11.6526 14.25 12 14.25C13.2426 14.25 14.25 13.2426 14.25 12C14.25 11.6526 14.1713 11.3237 14.0307 11.0299L11.0299 14.0307Z"
+                      fill="black" />
+                <path
+                  d="M12 5.25C13.0323 5.25 14.0236 5.40934 14.9511 5.68101C15.1296 5.73328 15.1827 5.95662 15.0513 6.0881L14.2267 6.91265C14.1648 6.97451 14.0752 6.99928 13.99 6.97967C13.3506 6.83257 12.6839 6.75 12 6.75C9.71345 6.75 7.61978 7.67292 6.09267 8.84497C5.33078 9.42972 4.72857 10.0626 4.32343 10.6464C3.90431 11.2503 3.75 11.7227 3.75 12C3.75 12.2773 3.90431 12.7497 4.32343 13.3536C4.67725 13.8635 5.18138 14.4107 5.81091 14.9307C5.92677 15.0264 5.93781 15.2015 5.83156 15.3078L5.12265 16.0167C5.03234 16.107 4.88823 16.1149 4.79037 16.0329C4.09739 15.4517 3.51902 14.8255 3.0911 14.2089C2.59937 13.5003 2.25 12.7227 2.25 12C2.25 11.2773 2.59937 10.4997 3.0911 9.79115C3.59681 9.06244 4.31262 8.32028 5.17941 7.65503C6.90965 6.32708 9.31598 5.25 12 5.25Z"
+                  fill="black" />
+                <path
+                  d="M12 8.25C12.1185 8.25 12.2357 8.25549 12.3513 8.26624C12.5482 8.28453 12.6194 8.51991 12.4796 8.6597L11.2674 9.87196C10.6141 10.0968 10.0968 10.6141 9.87196 11.2674L8.6597 12.4796C8.51991 12.6194 8.28453 12.5482 8.26624 12.3513C8.25549 12.2357 8.25 12.1185 8.25 12C8.25 9.92893 9.92893 8.25 12 8.25Z"
+                  fill="black" />
+              </svg>
+
+            </button>
+            </div>
+          </div>
+          <div class="text-red-400 text-sm" *ngIf="password?.invalid && (password?.dirty || password?.touched) && !password?.value?.match('^(?=.*[A-Z])')">
+            <span  class="block text-xs" >At least one uppercase
+                            letter.</span>
+
+          </div>
+          <div class="text-red-400 text-sm" *ngIf="password?.invalid && (password?.dirty || password?.touched) && !password?.value?.match('(?=.*[a-z])')">
+            <span class="block text-xs" [ngClass]="{'text-primary': password?.value?.match('(?=.*[a-z])')}">At least one lowercase
+                            letter.</span>
+
+          </div>
+          <div class="text-red-400 text-sm" *ngIf="password?.invalid && (password?.dirty || password?.touched) && !password?.value?.match('(.*[0-9].*)')">
+            <span class="block text-xs" >At least one
+                            digit.</span>
+          </div>
+          <div class="text-red-400 text-sm" *ngIf="password?.invalid && (password?.dirty || password?.touched) && !password?.value?.match('(?=.*[!@#$%^&*])')">
+               <span class="block text-xs" >At least one
+                            special
+                            character.</span>
+          </div>
+          <div class="text-red-400 text-sm" *ngIf="password?.invalid && (password?.dirty || password?.touched) && !password?.value?.match('.{8,}')">
+            <span class="block text-xs" >At least 8 characters
+                            long.</span>
+          </div>
+
+          <div class="flex items-center justify-between">
+
+            <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
+          </div>
+
+          <button [disabled]="!registerForm.valid" role="button" (click)="registerSubmit()"  class="w-full flex justify-center text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            Sign up
+            <div *ngIf="loadingRegister"
+                 class="animate-spin inline-block w-4 h-4 ml-2  border-[3px] border-current border-t-transparent text-white rounded-full"
+                 role="status" aria-label="loading">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </button>
+          <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+            Do you have an account ? <a routerLink="/auth/login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</a>
+          </p>
+          <!--<div>
+            <button type="button" class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2">
+              <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+                <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
+              </svg>
+               Facebook
+            </button>
+            <button type="button" class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2">
+              <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
+                <path fill-rule="evenodd" d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z" clip-rule="evenodd"/>
+              </svg>
+              Sign in with Google
+            </button>
+          </div>-->
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
