@@ -4,6 +4,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {AuthGuard} from "../authentication/authentication.guard";
 import {LayoutComponent} from "./layout/layout.component";
 import {Role} from "../enums/role";
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 
@@ -18,6 +19,12 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       { path : "dashboard", component : DashboardComponent ,
+        canActivate : [AuthGuard]  ,
+        data : {
+          roles: [Role.User]
+        }
+      },
+      { path : "edit-profile", component : EditProfileComponent ,
         canActivate : [AuthGuard]  ,
         data : {
           roles: [Role.User]

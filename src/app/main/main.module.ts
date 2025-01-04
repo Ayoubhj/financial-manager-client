@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import {MainRoutingModule} from "./main-routing.module";
 import { LayoutComponent } from './layout/layout.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
-import {AuthGuard} from "../authentication/authentication.guard";
-import {UserService} from "../services/user.service";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditProfileComponent
   ],
   imports: [
     CommonModule,
